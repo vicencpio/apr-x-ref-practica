@@ -4,8 +4,27 @@ from matplotlib import pyplot as plt
 
 # Exercici 1.1
 
+# configuració de l'observació
+config = {
+    "observation": {
+    "type": "OccupancyGrid",
+    "vehicles_count": 5,
+    "features": ["presence", "x", "y", "vx", "vy"],
+    "features_range": {
+        "x": [-100, 100],
+        "y": [-100, 100],
+        "vx": [-20, 20],
+        "vy": [-20, 20]
+    },
+    "grid_size": [[-10, 10], [-10, 10]],
+    "grid_step": [5, 5],
+    "absolute": False
+    }
+}
+   
 # Importem i inicialitzem l'entorn
 env = gym.make("highway-v0")
+env.configure(config)
 env.reset()
 
 # Exploració de l'entorn
